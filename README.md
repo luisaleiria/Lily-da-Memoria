@@ -1,4 +1,4 @@
-# 🐶 Lily da Memória 
+# Lily da Memória 🐶
 
 Um jogo da memória web interativo que utiliza fotos da Lily em pares, com três níveis de dificuldade (Fácil, Médio, Difícil) e efeito de confetes ao completar o jogo.
 
@@ -82,5 +82,5 @@ Este projeto está sob a [MIT License](LICENSE).
 
 ---
 <div align="center">
-  <small>Desenvolvido com ❤️ por [Seu Nome]</small>
+  <small>Desenvolvido com ❤️ por Luisa Leiria</small>
 </div>
