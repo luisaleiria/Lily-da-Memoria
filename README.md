@@ -1,59 +1,86 @@
-# Jogo da Memória Emoji
+# 🐶 Lily da Memória 
 
-Um jogo da memória simples para navegador, usando cartas de emojis e animação de confetes ao vencer.
-
-## 🎯 Objetivo do Jogo
-
-* Combine todos os pares de emojis virando duas cartas por vez.
-* Ao combinar corretamente um par, as cartas permanecem abertas.
-* Se não combinarem, as cartas se fecham novamente.
-* Quando todos os pares forem encontrados, exibe uma chuva de confetes e uma mensagem de vitória.
-
-## 📂 Estrutura de Arquivos
-
-```
-jogo-memoria-emoji/
-├── index.html          # página principal com grid e botões
-├── styles/
-│   ├── reset.css       # reset básico de CSS
-│   └── main.css        # estilos do layout, cartas e animações
-├── scripts/
-│   └── engine.js       # lógica do jogo (embaralhar, virar cartas, checar pares)
-└── README.md           # este arquivo
-```
-
-## 🛠 Tecnologias
-
-* **HTML5**: estrutura da página e grid do jogo.
-* **CSS3** (Flexbox, Transforms): layout responsivo, estilo das cartas e efeito de flip.
-* **JavaScript (ES6+)**: lógica de embaralhamento, detecção de pares, contagem de aberturas e disparo de confetes.
-* **canvas‑confetti**: biblioteca para animação de confetes ao vencer.
-
-## 🚀 Como Usar
-
-1. **Clone ou baixe** este repositório.
-2. Abra o arquivo `index.html` no seu navegador (localmente ou via servidor HTTP).
-3. Clique nas cartas para virar duas por vez e combinar os pares.
-4. Ao encontrar todos os pares, a animação de confetes será exibida.
-
-## ⚙️ Configurações
-
-* Para alterar os emojis usados, edite o array `emojis` em `scripts/engine.js`.
-* Para ajustar o tempo de flip ou delay entre tentativas, modifique o valor em `setTimeout(checkMatch, 500)`.
-* Para alterar parâmetros de confete (quantidade, ângulo, velocidade), ajuste o objeto `params` dentro de `checkMatch()`.
-
-## 🖼️ Layout e Estilo
-
-* As cartas têm 100×100px, transform-style 3D e uso de `backface-visibility` para efeito de flip.
-* O grid `.game` usa Flexbox, wrap e gap para organizar as cartas.
-* O container centraliza o conteúdo e aplica um gradiente de fundo.
-
-## 📄 Licença
-
-Este projeto está disponível sob a [MIT License](LICENSE).
+Um jogo da memória web interativo que utiliza fotos da Lily em pares, com três níveis de dificuldade (Fácil, Médio, Difícil) e efeito de confetes ao completar o jogo.
 
 ---
 
+## 🎯 Objetivo
+
+* Virar duas cartas por vez para encontrar pares da mesma foto.
+* Ao acertar, as cartas permanecem viradas; ao errar, voltam ao estado inicial.
+* Existem três níveis de dificuldade que definem quantos pares e colunas o tabuleiro terá:
+
+  * **Fácil**: 8 pares, 4 colunas
+  * **Médio**: 12 pares, 6 colunas
+  * **Difícil**: 16 pares, 8 colunas
+* Ao encontrar todos os pares, uma chuva de confetes é exibida e a mensagem de vitória aparece.
+
+---
+
+## 📂 Estrutura do Projeto
+
+```
+lily-da-memoria/
+├── index.html             # página principal
+├── images/                # fotos da Lily (cada par duplicado)
+│   ├── babyLily.jpg
+│   ├── lilyAniversario.png
+│   └── ...
+├── styles/
+│   ├── reset.css          # reset de estilos
+│   └── main.css           # layout, grid, flip 3D e temas
+├── scripts/
+│   └── engine.js          # lógica do jogo, níveis, embaralhamento e confetes
+└── README.md              # este arquivo
+```
+
+---
+
+## 🚀 Tecnologias
+
+* **HTML5**
+* **CSS3** (Flexbox, CSS Grid, Transforms 3D)
+* **JavaScript (ES6+)**
+* **canvas-confetti** para animação de confetes
+
+---
+
+## ⚙️ Como Executar
+
+1. Clone este repositório ou baixe os arquivos.
+2. Abra o `index.html` em um navegador moderno (Chrome, Firefox, Edge).
+3. Escolha o nível clicando nos botões **Fácil**, **Médio** ou **Difícil**.
+4. Inicie o jogo virando as cartas para encontrar os pares.
+5. Ao completar todos os pares, divirta-se com a chuva de confetes!
+
+---
+
+## 🎮 Como Jogar
+
+1. Clique em **Fácil**, **Médio** ou **Difícil** para selecionar o número de pares.
+2. O tabuleiro se ajusta ao nível escolhido.
+3. Clique em duas cartas para virá-las:
+
+   * Se formarem par, ficam abertas.
+   * Se não, voltam ao estado fechado após breve delay.
+4. Continue até encontrar todas as fotos em pares.
+5. Ao completar, o confete cai e o jogo exibe: **Você Venceu!**
+
+---
+
+## 🔧 Configurações
+
+* **Adicionar novas imagens**: coloque-as na pasta `images/` e garanta que cada foto seja duplicada no array `lilys` em `engine.js`.
+* **Ajustar delay de flip**: modifique o tempo em `setTimeout(checkMatch, 500)` em `engine.js`.
+* **Parâmetros de confete**: personalize o objeto `params` em `checkMatch()`.
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a [MIT License](LICENSE).
+
+---
 <div align="center">
   <small>Desenvolvido com ❤️ por [Seu Nome]</small>
 </div>
