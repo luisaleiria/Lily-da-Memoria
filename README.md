@@ -82,5 +82,5 @@ Este projeto está sob a [MIT License](LICENSE).
 
 ---
 <div align="center">
-  <small>Desenvolvido com ❤️ por Luisa Leiria</small>
+  <small>Desenvolvido com 💓 por Luisa Leiria</small>
 </div>
