@@ -93,6 +93,10 @@ function resetGame(){
 
 
 function handleClick(){
+
+    if (this.classList.contains('boxOpen') || this.classList.contains('boxMatch')) {
+        return;
+    }
     if(openCards.length < 2){
         this.classList.add("boxOpen");
         openCards.push(this);
