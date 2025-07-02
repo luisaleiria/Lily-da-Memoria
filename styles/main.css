@@ -8,25 +8,39 @@ body{
 }
 
 .niveis {
-  display: flex;
-  justify-content: center;  /* centraliza os botões no container */
-  gap: 5px;                /* espaçamento entre eles */
-  width: 100%;              /* ocupa toda a largura do pai */
-  margin-bottom: 10px;      /* se quiser um espacinho abaixo */
+    display: flex;
+    justify-content: center;  /* centraliza os botões no container */
+    gap: 5px;                /* espaçamento entre eles */
+    width: 100%;              /* ocupa toda a largura do pai */
+    margin-bottom: 0;      /* se quiser um espacinho abaixo */
 }
 
 .nivel {
-  flex: 1;                  /* cada botão cresce igual */
-  max-width: 150px;         /* opcional: limite de largura */
-  padding: 10px 10px;
-  color: black;
-  background-color: rgb(196, 227, 254);
-  border: none;
-  font-size: 1em;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-weight: 600;
+    flex: 1;                  /* cada botão cresce igual */
+    max-width: 150px;         /* opcional: limite de largura */
+    padding: 10px 10px;
+    color: black;
+    background-color: rgb(196, 227, 254);
+    border: none;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#players {
+    background-color: rgb(22, 6, 63);
+    color: rgb(196, 227, 254);
+}
+
+.player-select {
+    padding: 8px;
+    font-size: 1em;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: rgb(196, 227, 254);
+    cursor: pointer;
 }
 
 .container{
@@ -46,6 +60,43 @@ h2{
     color: white;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    margin-bottom: 0;
+}
+
+h3{
+    font-size: 1.5em;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.2rem;
+}
+
+label{
+    color: rgb(253, 154, 127);
+}
+
+#turno{
+    margin-bottom: 0.5rem;
+    display: none;
+}
+
+.placar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;   
+    margin-top: 0.5rem;   
+    margin-bottom: 0.1rem;     
+    color: rgb(22, 6, 63);           
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+#placar span {
+    background: rgb(253, 154, 127);  /* retângulo semitransparente atrás do texto */
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
 }
 
 .reset{
@@ -59,20 +110,16 @@ h2{
     text-transform: uppercase;
     cursor: pointer;
     font-weight: 600;
+    margin-top: 0.6em;
 }
-
-.reset:focus{
-    color: #ec38bc;
-    background-color: #262809;
-}
-
 
 .game {
-  display: grid;
-  grid-template-columns: repeat(5, 100px);
-  grid-auto-rows: 100px;
-  gap: 10px;
-  justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-auto-rows: 100px;
+    gap: 10px;
+    justify-content: center;
+    padding-top: 0;
 }
 
 .item{

@@ -35,10 +35,37 @@ const lilys = [
 
 const nivelButtons = document.querySelectorAll('.nivel');
 const game = document.querySelector('.game');
+const turnoElement = document.getElementById('turno');
+const nomepLabel = document.querySelector('#turno .nomep');
+const numPlayersSelect = document.getElementById('numPlayers');
+const placarElement = document.getElementById('placar');
+const score1El = document.getElementById('score1');
+const score2El = document.getElementById('score2');
+
 let nivelAtual = 'facil'; 
 let columns;
 let openCards = [];
+let numPlayers = Number(numPlayersSelect.value);
+let currentPlayer = 1;
 
+let pontuacaoPlayer1 = 0;
+let pontuacaoPlayer2 = 0;
+
+//mudando numero de jogadores
+numPlayersSelect.addEventListener('change', (e) => {
+    numPlayers = Number(e.target.value);
+
+    if(numPlayers===2){ //mostra o player que ta jogando
+        turnoElement.style.display = 'block';
+        currentPlayer = 1;
+        nomepLabel.textContent = `Player ${currentPlayer}`;
+        placarElement.style.display = 'block';
+    }
+    else{ // so tem um jogador
+        turnoElement.style.display = 'none';
+        placarElement.style.display = 'none';
+    }
+});
 
 nivelButtons.forEach(botSel =>{
     botSel.addEventListener('click', ()=> {
@@ -54,8 +81,18 @@ function resetGame(){
     // limpa o grid
     game.innerHTML = '';
     openCards = [];
-    
-    let pares;
+    pontuacaoPlayer1 = 0;
+    pontuacaoPlayer2 = 0;
+
+    if (numPlayers===2){
+        placarElement.style.display = 'block';
+    }
+    else{
+        placarElement.style.display = 'none';
+    }
+
+    score1El.textContent = pontuacaoPlayer1;
+    score2El.textContent = pontuacaoPlayer2;
 
     if (nivelAtual === 'facil') {
     lilysNoJogo = lilys.slice(0, 8 * 2);
@@ -88,9 +125,7 @@ function resetGame(){
         box.onclick = handleClick;
         document.querySelector(".game").appendChild(box);
     }
-
 }
-
 
 function handleClick(){
 
@@ -111,12 +146,27 @@ function checkMatch(){
     if(openCards[0].innerHTML === openCards[1].innerHTML){
         openCards[0].classList.add("boxMatch");
         openCards[1].classList.add("boxMatch");
+
+        if(numPlayers===2){
+            if(currentPlayer===1){
+                pontuacaoPlayer1++;
+                score1El.textContent = pontuacaoPlayer1;
+            }
+            else{
+                pontuacaoPlayer2++;
+                score2El.textContent = pontuacaoPlayer2;
+            }
+        }
     }
     else{
         openCards[0].classList.remove("boxOpen");
         openCards[1].classList.remove("boxOpen");
-    }
 
+        if(numPlayers===2){
+            currentPlayer = (currentPlayer === 1) ? 2 : 1;
+            nomepLabel.textContent= `Player ${currentPlayer}`;
+        }
+    }
     openCards = [];
 
     if(document.querySelectorAll(".boxMatch").length === lilysNoJogo.length){
@@ -132,10 +182,22 @@ function checkMatch(){
         // lança de volta pra direita
         confetti({ ...params, origin: { x: 1, y: 0.5 }, angle: 135 });
 
-        // alert("Você Venceu!")
-        setTimeout(()=> {
-            alert("Você Venceu!");
-        }, 1000);
+        setTimeout(() => {
+            if(numPlayers===2){
+                if(pontuacaoPlayer1 > pontuacaoPlayer2){
+                    alert(`O Player 1 venceu por ${pontuacaoPlayer1}×${pontuacaoPlayer2}`);
+                }
+                else if(pontuacaoPlayer2 > pontuacaoPlayer1){
+                    alert(`O Player 2 venceu por ${pontuacaoPlayer2}×${pontuacaoPlayer1}`);
+                }
+                else{
+                   alert(`Empate: ${pontuacaoPlayer1}×${pontuacaoPlayer2}`); 
+                }
+            }
+            else{
+                alert("Você Venceu!");
+            }
+        }, 500);
     }
 }
 

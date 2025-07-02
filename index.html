@@ -15,8 +15,22 @@
             <button class="nivel" data-level="facil" >Fácil</button>
             <button class="nivel" data-level="medio" >Médio</button>
             <button class="nivel" data-level="dificil" >Difícil</button>
+
+            <label class="nivel" id="players"for="numPlayers">Jogadores:</label>
+                <select id="numPlayers" class="player-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
         </div>
+        
+        <h3 id="turno" style="display:none">Vez do <label class="nomep">Player 1</label> jogar</h3>
         <div class="game"></div>
+
+        <div class="placar" id="placar" style="display:none">
+            <span>Player 1: <span id="score1">0</span></span>
+            <span style="margin-left:1rem">Player 2: <span id="score2">0</span></span>
+        </div>
+
         <button class="reset" onclick="window.location.reload()">RESET GAME</button>
     </div>
 
