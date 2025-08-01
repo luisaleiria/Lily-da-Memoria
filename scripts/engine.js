@@ -115,7 +115,7 @@ function resetGame(){
         columns = isMobile ? 3 : 4;
     }
 
-    const itemSize = isMobile ? '4.5rem' : '6.25rem';
+    const itemSize = isMobile ? '6.5rem' : '6.25rem';
     game.style.gridTemplateColumns = `repeat(${columns}, ${itemSize})`;
     game.style.width = 'fit-content';
     game.style.margin = '0 auto';

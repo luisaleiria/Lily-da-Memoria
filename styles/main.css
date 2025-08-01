@@ -47,9 +47,18 @@ body{
     color: rgb(253, 154, 127);
 }
 
-#players {
+.players-label {
     background-color: rgb(22, 6, 63);
     color: rgb(196, 227, 254);
+    cursor: default;
+    flex: 1;
+    max-width: 9.375rem;
+    padding: 0.625rem 0.625rem;
+    border: none;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 .player-select {
@@ -207,8 +216,12 @@ label{
 /* Media Queries para dispositivos móveis */
 @media (max-width: 767px) {
     .container {
-        padding: 1rem 1rem;
-        gap: 0.8rem;
+        padding: 2rem 1.5rem;
+        gap: 1rem;
+        width: 95vw;
+        min-width: 350px;
+        min-height: 100vh;
+        box-sizing: border-box;
     }
 
     h2 {
@@ -236,8 +249,12 @@ label{
         font-size: 0.9em;
     }
 
-    #players {
+    .players-label {
         text-align: center;
+        max-width: none;
+        width: 100%;
+        padding: 0.8rem 1rem;
+        font-size: 0.9em;
     }
 
     .player-select {
@@ -247,16 +264,15 @@ label{
     }
 
     .game {
-        gap: 0.4rem;
+        gap: 1rem;
         padding: 0.5rem 0;
         justify-content: center;
-        max-width: 100vw;
-        overflow-x: auto;
+        max-width: 100%;
     }
 
     .item {
-        width: 4.5rem;
-        height: 4.5rem;
+        width: 6.5rem;
+        height: 6.5rem;
     }
 
     .placar {
@@ -282,7 +298,11 @@ label{
 /* Media Query para telas muito pequenas (menos de 480px) */
 @media (max-width: 479px) {
     .container {
-        padding: 0.8rem 0.5rem;
+        padding: 1.5rem 1rem;
+        width: 98vw;
+        min-width: 320px;
+        min-height: 100vh;
+        box-sizing: border-box;
     }
 
     h2 {
@@ -290,15 +310,20 @@ label{
     }
 
     .item {
-        width: 4rem;
-        height: 4rem;
+        width: 5.5rem;
+        height: 5.5rem;
     }
 
     .game {
-        gap: 0.3rem;
+        gap: 0.4rem;
     }
 
     .nivel {
+        padding: 0.7rem 0.8rem;
+        font-size: 0.8em;
+    }
+
+    .players-label {
         padding: 0.7rem 0.8rem;
         font-size: 0.8em;
     }
