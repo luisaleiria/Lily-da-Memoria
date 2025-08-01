@@ -10,15 +10,15 @@ body{
 .niveis {
     display: flex;
     justify-content: center;  /* centraliza os botões no container */
-    gap: 5px;                /* espaçamento entre eles */
+    gap: 0.3125rem;                /* espaçamento entre eles */
     width: 100%;              /* ocupa toda a largura do pai */
     margin-bottom: 0;      /* se quiser um espacinho abaixo */
 }
 
 .nivel {
     flex: 1;                  /* cada botão cresce igual */
-    max-width: 150px;         /* opcional: limite de largura */
-    padding: 10px 10px;
+    max-width: 9.375rem;         /* opcional: limite de largura */
+    padding: 0.625rem 0.625rem;
     color: black;
     background-color: rgb(196, 227, 254);
     border: none;
@@ -29,18 +29,41 @@ body{
     font-weight: 600;
 }
 
+.nivel:hover{
+    background-color: rgb(128, 195, 253);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.nivel.ativo {
+    background-color: rgb(253, 154, 127);
+    color: rgb(22, 6, 63);
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(22, 6, 63, 0.3);
+}
+
+.nivel.ativo:hover {
+    background-color: rgb(44, 20, 90);
+    color: rgb(253, 154, 127);
+}
+
 #players {
     background-color: rgb(22, 6, 63);
     color: rgb(196, 227, 254);
 }
 
 .player-select {
-    padding: 8px;
+    padding: 0.5rem;
     font-size: 1em;
     border-radius: 4px;
     border: 1px solid #ccc;
     background: rgb(196, 227, 254);
     cursor: pointer;
+    text-align: center;
+}
+
+.player-select:hover {
+    background: rgb(162, 207, 247);
 }
 
 .container{
@@ -49,10 +72,10 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 1rem;
     background: rgb(44, 94, 166);
     /* background: linear-gradient(90deg, rgb(127, 58, 180) 0%, rgb(227, 29, 253) 50%, rgb(186, 18, 96) 100%); */
-    padding: 40px 60px;
+    padding: 2.5rem 3.75rem;
 }
 
 h2{
@@ -100,7 +123,7 @@ label{
 }
 
 .reset{
-    padding: 15px 20px;
+    padding: 1rem 1.25rem;
     width: 100%;
     color: black;
     background-color: aliceblue;
@@ -113,22 +136,27 @@ label{
     margin-top: 0.6em;
 }
 
+.reset:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
 .game {
     display: grid;
-    grid-template-columns: repeat(5, 100px);
-    grid-auto-rows: 100px;
-    gap: 10px;
+    grid-template-columns: repeat(5, 6.25rem);
+    grid-auto-rows: 6.25rem;
+    gap: 0.625rem;
     justify-content: center;
     padding-top: 0;
 }
 
 .item{
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 6.25rem;
+    height: 6.25rem;
     overflow: hidden;
     transform-style: preserve-3d;
-    perspective: 500px;
+    perspective: 31.25rem;
 }
 
 .item img {
@@ -153,6 +181,11 @@ label{
 
 }
 
+.item:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
 .item.boxOpen{
     transform: rotateY(0deg);
 
@@ -169,4 +202,104 @@ label{
 
 .boxMatch::after{
     transform: rotateY(180deg);
+}
+
+/* Media Queries para dispositivos móveis */
+@media (max-width: 767px) {
+    .container {
+        padding: 1rem 1rem;
+        gap: 0.8rem;
+    }
+
+    h2 {
+        font-size: 2.2em;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    h3 {
+        font-size: 1.2em;
+        margin-top: 0.2rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .niveis {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .nivel {
+        max-width: none;
+        width: 100%;
+        padding: 0.8rem 1rem;
+        font-size: 0.9em;
+    }
+
+    #players {
+        text-align: center;
+    }
+
+    .player-select {
+        width: 100%;
+        padding: 0.8rem;
+        margin-top: 0.3rem;
+    }
+
+    .game {
+        gap: 0.4rem;
+        padding: 0.5rem 0;
+        justify-content: center;
+        max-width: 100vw;
+        overflow-x: auto;
+    }
+
+    .item {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    .placar {
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-top: 0.8rem;
+        font-size: 1rem;
+    }
+
+    #placar span {
+        padding: 0.5rem 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .reset {
+        font-size: 1.2em;
+        padding: 0.8rem 1rem;
+        margin-top: 1rem;
+    }
+}
+
+/* Media Query para telas muito pequenas (menos de 480px) */
+@media (max-width: 479px) {
+    .container {
+        padding: 0.8rem 0.5rem;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .item {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .game {
+        gap: 0.3rem;
+    }
+
+    .nivel {
+        padding: 0.7rem 0.8rem;
+        font-size: 0.8em;
+    }
 }

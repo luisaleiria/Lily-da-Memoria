@@ -94,25 +94,29 @@ function resetGame(){
     score1El.textContent = pontuacaoPlayer1;
     score2El.textContent = pontuacaoPlayer2;
 
+    // Detecta se é mobile (largura menor que 768px)
+    const isMobile = window.innerWidth < 768;
+
     if (nivelAtual === 'facil') {
-    lilysNoJogo = lilys.slice(0, 8 * 2);
-    columns     = 4;
+        lilysNoJogo = isMobile ? lilys.slice(0, 9 * 2) : lilys.slice(0, 8 * 2);
+        columns = isMobile ? 3 : 4;
     } 
     else if (nivelAtual === 'medio') {
-    lilysNoJogo = lilys.slice(0, 12 * 2);
-    columns     = 6;
+        lilysNoJogo = lilys.slice(0, 12 * 2);
+        columns = isMobile ? 4 : 6;
     } 
     else if (nivelAtual === 'dificil') {
-    lilysNoJogo = lilys.slice(0, 16 * 2);
-    columns     = 8;
+        lilysNoJogo = lilys.slice(0, 16 * 2);
+        columns = isMobile ? 4 : 8;
     } 
     else {
-    // fallback, caso alguém injete outro nivel
-    lilysNoJogo = lilys.slice(0, 8 * 2);
-    columns= 4;
+        // fallback, caso alguém injete outro nivel
+        lilysNoJogo = lilys.slice(0, 8 * 2);
+        columns = isMobile ? 3 : 4;
     }
 
-    game.style.gridTemplateColumns = `repeat(${columns}, 100px)`;
+    const itemSize = isMobile ? '4.5rem' : '6.25rem';
+    game.style.gridTemplateColumns = `repeat(${columns}, ${itemSize})`;
     game.style.width = 'fit-content';
     game.style.margin = '0 auto';
 
@@ -200,5 +204,13 @@ function checkMatch(){
         }, 500);
     }
 }
+
+// Listener para redimensionamento da tela (rotação do celular)
+window.addEventListener('resize', () => {
+    resetGame();
+});
+
+// Marca o nível inicial como ativo
+document.querySelector('.nivel[data-level="facil"]').classList.add('ativo');
 
 resetGame();
